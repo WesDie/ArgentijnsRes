@@ -4,6 +4,7 @@ CREATE TABLE Users (
     lastname varchar(255),
     phonenumber int(10),
     email varchar(255),
+    password varchar(255),
     role varchar(255)
     );
 
@@ -33,3 +34,7 @@ CREATE TABLE Reservations (
     tablenumber int(11),
     date_and_time datetime
     );
+
+-- Test Data
+INSERT INTO users ( firstname, lastname, phonenumber, email, password, role) 
+VALUES ("Jan", "Vries", 0670890167, "jan@gmail.com", "wachtwoord", "KLANT")
