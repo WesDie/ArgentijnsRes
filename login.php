@@ -9,7 +9,7 @@
       $myemail = mysqli_real_escape_string($db,$_POST['email']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
       
-      $sql = "SELECT user_id FROM users WHERE email = '$myemail' and password = '$mypassword'";
+      $sql = "SELECT * FROM users WHERE email = '$myemail' and password = '$mypassword'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       /*$active = $row['active'];
@@ -21,11 +21,19 @@
       
       // If result matched $myemail and $mypassword, table row must be 1 row
 		
-      if($count == 1) {
+      if($count == 1 && $row["role"] == "KLANT") {
          $_SESSION['login_user'] = $myemail;
          
-         header("location: welcome.php");
-      }else {
+         header("location: selectpage.php");
+      }else if ($count == 1 && $row["role"] == "MANAGER"){
+         $_SESSION['login_user'] = $myemail;
+         
+         header("location: ManagerDashboard.php");
+      }else if ($count == 1 && $row["role"] == "MEDEWERKER"){
+         $_SESSION['login_user'] = $myemail;
+         
+         header("location: MedewerkerDashboard.php");
+      } else {
          $error = "Your Login Name or Password is invalid";
       }
    }
