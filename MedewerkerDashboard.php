@@ -20,12 +20,7 @@
    </head>
    
    <body>
-      <form action="menu.php" method="post">
-         Search: <input type="text" name="productSearch"><br>
-         <input type="submit">
-      </form>
-
-      <h1>Welcome <?php echo $login_session; ?></h1> 
+      <h1>Welcome medewerker <?php echo $login_session; ?></h1> 
       <h2><a href = "logout.php">Sign Out</a></h2>
    </body>
    
